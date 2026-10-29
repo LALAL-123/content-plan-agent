@@ -1,0 +1,68 @@
+{
+  "title": "c02_missing_budget_deadline：缺预算和截止时间：不猜测，请求补充（运行 1/1）",
+  "request": {
+    "request_id": "PLAN-C02",
+    "topic": "冬季露营",
+    "preferred_option": "P-A"
+  },
+  "status": "needs_input",
+  "stop_reason": "model_finished",
+  "llm": "mock:scripted-policy",
+  "steps": 1,
+  "tool_calls": 0,
+  "final": {
+    "plan": {
+      "option_id": null,
+      "option_name": null,
+      "script_id": null,
+      "material_ids": [],
+      "plan_id": null
+    },
+    "steps": [
+      {
+        "step": "material_search",
+        "status": "not_run",
+        "detail": ""
+      },
+      {
+        "step": "cost_estimate",
+        "status": "not_run",
+        "detail": ""
+      },
+      {
+        "step": "script_writing",
+        "status": "not_run",
+        "detail": ""
+      },
+      {
+        "step": "plan_save",
+        "status": "not_run",
+        "detail": ""
+      }
+    ],
+    "tool_results": {
+      "estimates": {},
+      "script": null
+    },
+    "total_cost": 0,
+    "budget": null,
+    "saved": false,
+    "deduplicated": false,
+    "task_status": "needs_input",
+    "gaps": [
+      "缺少预算、截止时间，请补充后重新提交"
+    ],
+    "summary": "缺少预算、截止时间，未开始规划。"
+  },
+  "guard_corrections": [],
+  "trace": [
+    {
+      "step": 1,
+      "type": "finish",
+      "decision_note": "输入缺少硬约束，不能估算是否可行",
+      "recovered_from_text": false,
+      "status": "needs_input",
+      "guard_corrections": []
+    }
+  ]
+}

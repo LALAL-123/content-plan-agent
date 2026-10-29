@@ -1,0 +1,2 @@
+{"case_id": "c01_normal", "title": "正常完成：预算充足，偏好方案 P-A 可行", "covers": ["正常完成"],
+ "request": {"request_id": "PLAN-C01", "topic": "冬季露营", "budget": 15, "deadline": "2026-11-08 18:00", "preferred_option": "P-A"}}

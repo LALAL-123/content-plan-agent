@@ -1,0 +1,2 @@
+{"case_id": "c05_infeasible", "title": "无可行方案：预算 4 低于最便宜方案 5，返回未完成及缺口", "covers": ["预算超限"],
+ "request": {"request_id": "PLAN-C05", "topic": "冬季露营", "budget": 4, "deadline": "2026-11-08 18:00", "preferred_option": "P-A"}}

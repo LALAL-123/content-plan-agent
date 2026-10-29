@@ -1,0 +1,2 @@
+{"case_id": "c08_deadline_tight", "title": "截止时间紧：预算够但 P-A/P-B 超期，改选 P-C", "covers": ["正常完成", "预算超限"],
+ "request": {"request_id": "PLAN-C08", "topic": "冬季露营", "budget": 15, "deadline": "2026-11-03 19:00", "preferred_option": "P-A"}}

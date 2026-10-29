@@ -1,0 +1,2 @@
+{"case_id": "c03_over_budget", "title": "预算超限（参考实例）：P-A 估算 12 > 10，改选 P-B 估算 8 后保存", "covers": ["预算超限"],
+ "request": {"request_id": "PLAN-C03", "topic": "冬季露营", "budget": 10, "deadline": "2026-11-08 18:00", "preferred_option": "P-A"}}

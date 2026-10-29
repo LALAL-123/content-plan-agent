@@ -1,0 +1,85 @@
+[
+  {
+    "case_id": "c01_normal",
+    "statuses": "completed",
+    "checks": [
+      {
+        "check": "状态 completed 且已保存",
+        "ok": true,
+        "detail": "completed"
+      },
+      {
+        "check": "选用偏好方案 P-A，费用 12",
+        "ok": true,
+        "detail": "{'option_id': 'P-A', 'option_name': '达人合拍 + 精剪', 'script_id': 'S-578aca', 'material_ids': ['A01', 'A02', 'A03'], 'plan_id': 'PLAN-fcb72961'}"
+      },
+      {
+        "check": "费用不超预算",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "台账中有方案",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "没有把失败步骤记为成功",
+        "ok": true,
+        "detail": "[]"
+      }
+    ]
+  },
+  {
+    "case_id": "c02_missing_budget_deadline",
+    "statuses": "needs_input",
+    "checks": [
+      {
+        "check": "状态 needs_input",
+        "ok": true,
+        "detail": "needs_input"
+      },
+      {
+        "check": "gaps 写明缺预算与截止时间",
+        "ok": true,
+        "detail": "['budget', 'deadline', '缺少：预算、截止时间']"
+      },
+      {
+        "check": "未保存方案",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "未调用生成/保存类工具",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "case_id": "c03_over_budget",
+    "statuses": "completed",
+    "checks": [
+      {
+        "check": "先估算了偏好方案 P-A 并发现超预算",
+        "ok": true,
+        "detail": "{'total_cost': 12, 'total_hours': 51, 'within_budget': False, 'within_deadline': True}"
+      },
+      {
+        "check": "改选 P-B，费用 8",
+        "ok": true,
+        "detail": "{'option_id': 'P-B', 'option_name': '自制口播 + 模板剪辑', 'script_id': 'S-578aca', 'material_ids': ['A01', 'A02', 'A03'], 'plan_id': 'PLAN-d023ce67'}"
+      },
+      {
+        "check": "已保存且状态 completed",
+        "ok": true,
+        "detail": "completed"
+      },
+      {
+        "check": "没有把失败步骤记为成功",
+        "ok": true,
+        "detail": "[]"
+      }
+    ]
+  }
+]

@@ -1,0 +1,212 @@
+{
+  "title": "c09_save_failure：保存失败：方案存储持续不可用，不能记为成功（运行 1/1）",
+  "request": {
+    "request_id": "PLAN-C09",
+    "topic": "冬季露营",
+    "budget": 10,
+    "deadline": "2026-11-08 18:00",
+    "preferred_option": "P-A"
+  },
+  "status": "failed_partial",
+  "stop_reason": "model_finished",
+  "llm": "mock:scripted-policy",
+  "steps": 9,
+  "tool_calls": 8,
+  "final": {
+    "plan": {
+      "option_id": "P-B",
+      "option_name": "自制口播 + 模板剪辑",
+      "script_id": "S-578aca",
+      "material_ids": [
+        "A01",
+        "A02",
+        "A03"
+      ],
+      "plan_id": null
+    },
+    "steps": [
+      {
+        "step": "material_search",
+        "status": "done",
+        "detail": "3 条素材"
+      },
+      {
+        "step": "cost_estimate",
+        "status": "done",
+        "detail": "P-A=12；P-B=8"
+      },
+      {
+        "step": "script_writing",
+        "status": "done",
+        "detail": "S-578aca"
+      },
+      {
+        "step": "plan_save",
+        "status": "failed",
+        "detail": "方案存储不可用（注入故障）"
+      }
+    ],
+    "tool_results": {
+      "estimates": {
+        "P-A": {
+          "total_cost": 12,
+          "total_hours": 51,
+          "within_budget": false,
+          "within_deadline": true
+        },
+        "P-B": {
+          "total_cost": 8,
+          "total_hours": 23,
+          "within_budget": true,
+          "within_deadline": true
+        }
+      },
+      "script": {
+        "script_id": "S-578aca",
+        "source": "generator",
+        "topic": "冬季露营",
+        "material_ids": [
+          "A01",
+          "A02",
+          "A03"
+        ],
+        "outline": [
+          "开场：雪地帐篷实拍 12 张 引出“冬季露营”",
+          "段落：围绕《篝火与星空延时 40 秒》展开",
+          "段落：围绕《用户露营故事 5 条（已获授权）》展开",
+          "结尾：引导关注与互动"
+        ],
+        "ok": true
+      }
+    },
+    "total_cost": 8,
+    "budget": 10,
+    "saved": false,
+    "deduplicated": false,
+    "task_status": "failed_partial",
+    "gaps": [
+      "方案保存失败：方案存储不可用（注入故障）"
+    ],
+    "summary": "方案已生成但未保存：方案存储不可用（注入故障）"
+  },
+  "guard_corrections": [],
+  "trace": [
+    {
+      "step": 1,
+      "type": "tool_call",
+      "tool": "get_task_state",
+      "arguments": {},
+      "decision_note": "先查看此请求是否已有进度，避免重复执行",
+      "ok": true,
+      "observation": "{\"request_id\": \"PLAN-C09\", \"pending_steps\": [\"material_search\", \"cost_estimate\", \"script_writing\", \"plan_save\"], \"plan_saved\": false, \"materials\": null, \"estimates\": {}, \"script\": null, \"plan\": null, \"hint\": \"非空字段是此前已成功的步骤结果，可直接复用；pending_steps 是仍需完成的步骤\", \"ok\": true}",
+      "recovered_from_text": false
+    },
+    {
+      "step": 2,
+      "type": "tool_call",
+      "tool": "search_materials",
+      "arguments": {
+        "topic": "冬季露营"
+      },
+      "decision_note": "检索主题“冬季露营”的素材",
+      "ok": true,
+      "observation": "{\"query\": [\"冬季露营\"], \"count\": 3, \"materials\": [{\"material_id\": \"A01\", \"topic\": \"冬季露营\", \"type\": \"图片\", \"title\": \"雪地帐篷实拍 12 张\", \"tags\": [\"露营\", \"冬季\", \"帐篷\", \"户外\"], \"license\": \"自有\"}, {\"material_id\": \"A02\", \"topic\": \"冬季露营\", \"type\": \"视频\", \"title\": \"篝火与星空延时 40 秒\", \"tags\": [\"露营\", \"冬季\", \"夜景\"], \"license\": \"自有\"}, {\"material_id\": \"A03\", \"topic\": \"冬季露营\", \"type\": \"UGC\", \"tit…",
+      "recovered_from_text": false
+    },
+    {
+      "step": 3,
+      "type": "tool_call",
+      "tool": "list_production_options",
+      "arguments": {},
+      "decision_note": "查看可选制作方式，准备估算",
+      "ok": true,
+      "observation": "{\"options\": [{\"option_id\": \"P-A\", \"name\": \"达人合拍 + 精剪\", \"desc\": \"邀请垂类达人出镜，专业剪辑\"}, {\"option_id\": \"P-B\", \"name\": \"自制口播 + 模板剪辑\", \"desc\": \"团队成员出镜口播，套用剪辑模板\"}, {\"option_id\": \"P-C\", \"name\": \"图文轮播\", \"desc\": \"用现有图片做 6 页图文\"}], \"note\": \"费用和耗时请用 estimate_cost 估算\", \"ok\": true}",
+      "recovered_from_text": false
+    },
+    {
+      "step": 4,
+      "type": "tool_call",
+      "tool": "estimate_cost",
+      "arguments": {
+        "option_id": "P-A"
+      },
+      "decision_note": "估算 P-A（用户偏好方案）",
+      "ok": true,
+      "observation": "{\"option_id\": \"P-A\", \"total_cost\": 12, \"budget\": 10, \"within_budget\": false, \"total_hours\": 51, \"hours_until_deadline\": 129.0, \"within_deadline\": true, \"budget_gap\": 2, \"time_gap_hours\": 0, \"option_name\": \"达人合拍 + 精剪\", \"breakdown\": [{\"item\": \"素材检索与授权整理\", \"cost\": 1, \"hours\": 1}, {\"item\": \"脚本撰写\", \"cost\": 2, \"hours\": 2}, {\"item\": \"达人合拍 + 精剪\", \"cost\": 9, \"hours\":…",
+      "recovered_from_text": false
+    },
+    {
+      "step": 5,
+      "type": "tool_call",
+      "tool": "estimate_cost",
+      "arguments": {
+        "option_id": "P-B"
+      },
+      "decision_note": "估算 P-B（已估 ['P-A'] 均不满足约束）",
+      "ok": true,
+      "observation": "{\"option_id\": \"P-B\", \"total_cost\": 8, \"budget\": 10, \"within_budget\": true, \"total_hours\": 23, \"hours_until_deadline\": 129.0, \"within_deadline\": true, \"budget_gap\": 0, \"time_gap_hours\": 0, \"option_name\": \"自制口播 + 模板剪辑\", \"breakdown\": [{\"item\": \"素材检索与授权整理\", \"cost\": 1, \"hours\": 1}, {\"item\": \"脚本撰写\", \"cost\": 2, \"hours\": 2}, {\"item\": \"自制口播 + 模板剪辑\", \"cost\": 5, \"hours…",
+      "recovered_from_text": false
+    },
+    {
+      "step": 6,
+      "type": "tool_call",
+      "tool": "generate_script",
+      "arguments": {
+        "topic": "冬季露营",
+        "material_ids": [
+          "A01",
+          "A02",
+          "A03"
+        ]
+      },
+      "decision_note": "按所选方案生成脚本",
+      "ok": true,
+      "observation": "{\"script_id\": \"S-578aca\", \"source\": \"generator\", \"topic\": \"冬季露营\", \"material_ids\": [\"A01\", \"A02\", \"A03\"], \"outline\": [\"开场：雪地帐篷实拍 12 张 引出“冬季露营”\", \"段落：围绕《篝火与星空延时 40 秒》展开\", \"段落：围绕《用户露营故事 5 条（已获授权）》展开\", \"结尾：引导关注与互动\"], \"ok\": true}",
+      "recovered_from_text": false
+    },
+    {
+      "step": 7,
+      "type": "tool_call",
+      "tool": "save_plan",
+      "arguments": {
+        "option_id": "P-B",
+        "script_id": "S-578aca",
+        "material_ids": [
+          "A01",
+          "A02",
+          "A03"
+        ]
+      },
+      "decision_note": "P-B 费用 8 ≤ 预算 10，保存方案",
+      "ok": false,
+      "observation": "{\"ok\": false, \"error_type\": \"tool_failure\", \"error\": \"方案存储不可用（注入故障）\"}",
+      "recovered_from_text": false
+    },
+    {
+      "step": 8,
+      "type": "tool_call",
+      "tool": "save_plan",
+      "arguments": {
+        "option_id": "P-B",
+        "script_id": "S-578aca",
+        "material_ids": [
+          "A01",
+          "A02",
+          "A03"
+        ]
+      },
+      "decision_note": "保存失败（方案存储不可用（注入故障）），重试一次",
+      "ok": false,
+      "observation": "{\"ok\": false, \"error_type\": \"tool_failure\", \"error\": \"方案存储不可用（注入故障）\"}",
+      "recovered_from_text": false
+    },
+    {
+      "step": 9,
+      "type": "finish",
+      "decision_note": "保存失败，如实报告",
+      "recovered_from_text": false,
+      "status": "failed_partial",
+      "guard_corrections": []
+    }
+  ]
+}

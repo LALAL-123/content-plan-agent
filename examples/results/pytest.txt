@@ -1,0 +1,40 @@
+============================= test session starts =============================
+platform win32 -- Python 3.13.4, pytest-9.1.1, pluggy-1.6.0 -- <本机路径>
+rootdir: <项目根目录>
+configfile: pytest.ini
+testpaths: tests
+plugins: anyio-4.14.1, cov-7.1.0
+collecting ... collected 30 items
+
+tests/test_core.py::test_step_limit_returns_explicit_incomplete PASSED   [  3%]
+tests/test_core.py::test_tool_call_limit_stops_run PASSED                [  6%]
+tests/test_core.py::test_finish_in_same_turn_as_tool_is_rejected PASSED  [ 10%]
+tests/test_core.py::test_decision_note_is_traced_but_not_passed_to_tool PASSED [ 13%]
+tests/test_core.py::test_tool_errors_become_observations PASSED          [ 16%]
+tests/test_core.py::test_fault_plan_once_then_recovers PASSED            [ 20%]
+tests/test_core.py::test_llm_exception_returns_failed PASSED             [ 23%]
+tests/test_core.py::test_invalid_finish_is_sent_back_to_model PASSED     [ 26%]
+tests/test_core.py::test_text_reply_without_tool_is_nudged PASSED        [ 30%]
+tests/test_core.py::test_openai_compat_parses_tool_calls_and_bad_json PASSED [ 33%]
+tests/test_core.py::test_text_tool_call_is_recovered_only_with_name_and_json PASSED [ 36%]
+tests/test_core.py::test_agent_executes_recovered_text_call_and_marks_trace PASSED [ 40%]
+tests/test_domain.py::test_estimates_match_reference_example PASSED      [ 43%]
+tests/test_domain.py::test_deadline_is_checked PASSED                    [ 46%]
+tests/test_domain.py::test_save_plan_validates_and_is_idempotent PASSED  [ 50%]
+tests/test_domain.py::test_save_plan_requires_budget_and_deadline PASSED [ 53%]
+tests/test_domain.py::test_ledger_keeps_successful_steps_for_resume PASSED [ 56%]
+tests/test_domain.py::test_guard_rejects_failed_step_marked_done_and_fake_save PASSED [ 60%]
+tests/test_domain.py::test_guard_refuses_over_budget_choice PASSED       [ 63%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c01_normal] PASSED [ 66%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c02_missing_budget_deadline] PASSED [ 70%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c03_over_budget] PASSED [ 73%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c04_tool_failure_fallback] PASSED [ 76%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c05_infeasible] PASSED [ 80%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c06_repeat_execution] PASSED [ 83%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c07_resume_after_failure] PASSED [ 86%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c08_deadline_tight] PASSED [ 90%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c09_save_failure] PASSED [ 93%]
+tests/test_domain.py::test_case_acceptance_with_offline_mock[c10_step_limit] PASSED [ 96%]
+tests/test_domain.py::test_guard_rewrites_field_name_gaps_into_readable_text PASSED [100%]
+
+============================= 30 passed in 0.16s ==============================

@@ -1,0 +1,3 @@
+{"case_id": "c04_tool_failure_fallback", "title": "工具失败：脚本生成持续失败，改用模板脚本，保留已成功的素材与估算", "covers": ["工具失败"],
+ "request": {"request_id": "PLAN-C04", "topic": "冬季露营", "budget": 10, "deadline": "2026-11-08 18:00", "preferred_option": "P-A"},
+ "faults": {"generate_script": {"mode": "always", "error": "脚本生成服务 503（注入故障）"}}}

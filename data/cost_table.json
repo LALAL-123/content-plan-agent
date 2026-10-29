@@ -1,0 +1,13 @@
+{
+  "unit": "模拟单位",
+  "now": "2026-11-03 09:00",
+  "fixed_steps": [
+    {"item": "素材检索与授权整理", "cost": 1, "hours": 1},
+    {"item": "脚本撰写", "cost": 2, "hours": 2}
+  ],
+  "production_options": [
+    {"option_id": "P-A", "name": "达人合拍 + 精剪", "desc": "邀请垂类达人出镜，专业剪辑", "cost": 9, "hours": 48},
+    {"option_id": "P-B", "name": "自制口播 + 模板剪辑", "desc": "团队成员出镜口播，套用剪辑模板", "cost": 5, "hours": 20},
+    {"option_id": "P-C", "name": "图文轮播", "desc": "用现有图片做 6 页图文", "cost": 2, "hours": 6}
+  ]
+}

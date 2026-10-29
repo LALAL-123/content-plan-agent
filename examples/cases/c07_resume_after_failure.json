@@ -1,0 +1,4 @@
+{"case_id": "c07_resume_after_failure", "title": "失败续跑（加分项）：首次脚本与模板都失败；服务恢复后再次提交，只补做失败步骤", "covers": ["工具失败", "重复执行", "失败步骤续跑"],
+ "request": {"request_id": "PLAN-C07", "topic": "冬季露营", "budget": 10, "deadline": "2026-11-08 18:00", "preferred_option": "P-A"},
+ "runs": [{"faults": {"generate_script": {"mode": "always", "error": "脚本生成服务 503（注入故障）"}, "get_script_template": {"mode": "always", "error": "模板服务 503（注入故障）"}}},
+          {"faults": {}}]}

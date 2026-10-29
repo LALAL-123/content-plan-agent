@@ -1,0 +1,272 @@
+[
+  {
+    "case_id": "c01_normal",
+    "statuses": "completed",
+    "checks": [
+      {
+        "check": "状态 completed 且已保存",
+        "ok": true,
+        "detail": "completed"
+      },
+      {
+        "check": "选用偏好方案 P-A，费用 12",
+        "ok": true,
+        "detail": "{'option_id': 'P-A', 'option_name': '达人合拍 + 精剪', 'script_id': 'S-578aca', 'material_ids': ['A01', 'A02', 'A03'], 'plan_id': 'PLAN-fcb72961'}"
+      },
+      {
+        "check": "费用不超预算",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "台账中有方案",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "没有把失败步骤记为成功",
+        "ok": true,
+        "detail": "[]"
+      }
+    ]
+  },
+  {
+    "case_id": "c02_missing_budget_deadline",
+    "statuses": "needs_input",
+    "checks": [
+      {
+        "check": "状态 needs_input",
+        "ok": true,
+        "detail": "needs_input"
+      },
+      {
+        "check": "gaps 写明缺预算与截止时间",
+        "ok": true,
+        "detail": "['缺少：预算、截止时间']"
+      },
+      {
+        "check": "未保存方案",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "未调用生成/保存类工具",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "case_id": "c03_over_budget",
+    "statuses": "completed",
+    "checks": [
+      {
+        "check": "先估算了偏好方案 P-A 并发现超预算",
+        "ok": true,
+        "detail": "{'total_cost': 12, 'total_hours': 51, 'within_budget': False, 'within_deadline': True}"
+      },
+      {
+        "check": "改选 P-B，费用 8",
+        "ok": true,
+        "detail": "{'option_id': 'P-B', 'option_name': '自制口播 + 模板剪辑', 'script_id': 'S-578aca', 'material_ids': ['A01', 'A02', 'A03'], 'plan_id': 'PLAN-d023ce67'}"
+      },
+      {
+        "check": "已保存且状态 completed",
+        "ok": true,
+        "detail": "completed"
+      },
+      {
+        "check": "没有把失败步骤记为成功",
+        "ok": true,
+        "detail": "[]"
+      }
+    ]
+  },
+  {
+    "case_id": "c04_tool_failure_fallback",
+    "statuses": "completed",
+    "checks": [
+      {
+        "check": "脚本生成失败后改用模板",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "素材与估算结果保留",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "最终方案已保存，费用不超预算",
+        "ok": true,
+        "detail": "8"
+      },
+      {
+        "check": "步骤说明标注替代方案",
+        "ok": true,
+        "detail": "TPL-7db4bf（定制脚本失败，改用模板）"
+      },
+      {
+        "check": "没有把失败步骤记为成功",
+        "ok": true,
+        "detail": "[]"
+      }
+    ]
+  },
+  {
+    "case_id": "c05_infeasible",
+    "statuses": "infeasible",
+    "checks": [
+      {
+        "check": "状态 infeasible",
+        "ok": true,
+        "detail": "infeasible"
+      },
+      {
+        "check": "未保存",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "gaps 写明预算缺口",
+        "ok": true,
+        "detail": "['最接近的 P-C：预算缺口 1，时间缺口 0 小时']"
+      },
+      {
+        "check": "没有选中任何方案",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "case_id": "c06_repeat_execution",
+    "statuses": "completed → completed",
+    "checks": [
+      {
+        "check": "两次都 completed",
+        "ok": true,
+        "detail": "completed/completed"
+      },
+      {
+        "check": "同一方案 ID",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "台账中方案版本为 1",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "第二次未重做脚本与检索",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  },
+  {
+    "case_id": "c07_resume_after_failure",
+    "statuses": "failed_partial → failed_partial",
+    "checks": [
+      {
+        "check": "首次失败但保留成功步骤",
+        "ok": true,
+        "detail": "failed_partial"
+      },
+      {
+        "check": "首次脚本步骤记为 failed",
+        "ok": true,
+        "detail": "failed"
+      },
+      {
+        "check": "续跑复用素材与估算",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "续跑只补做脚本并保存",
+        "ok": false,
+        "detail": "failed_partial"
+      }
+    ]
+  },
+  {
+    "case_id": "c08_deadline_tight",
+    "statuses": "completed",
+    "checks": [
+      {
+        "check": "偏好方案因超期被放弃",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "选择满足截止时间的 P-C",
+        "ok": true,
+        "detail": "{'option_id': 'P-C', 'option_name': '图文轮播', 'script_id': 'S-578aca', 'material_ids': ['A01', 'A02', 'A03'], 'plan_id': 'PLAN-7f17db19'}"
+      },
+      {
+        "check": "已保存",
+        "ok": true,
+        "detail": "completed"
+      }
+    ]
+  },
+  {
+    "case_id": "c09_save_failure",
+    "statuses": "failed_partial",
+    "checks": [
+      {
+        "check": "状态 failed_partial",
+        "ok": true,
+        "detail": "failed_partial"
+      },
+      {
+        "check": "saved=false，plan_save 记为 failed",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "其他步骤结果保留",
+        "ok": true,
+        "detail": ""
+      },
+      {
+        "check": "gaps 写明保存失败",
+        "ok": false,
+        "detail": "['方案存储不可用（注入故障）', 'plan_save 失败：方案存储不可用（注入故障）']"
+      },
+      {
+        "check": "没有把失败步骤记为成功",
+        "ok": true,
+        "detail": "[]"
+      }
+    ]
+  },
+  {
+    "case_id": "c10_step_limit",
+    "statuses": "incomplete",
+    "checks": [
+      {
+        "check": "返回明确未完成状态",
+        "ok": true,
+        "detail": "incomplete"
+      },
+      {
+        "check": "决策轮数不超过上限",
+        "ok": true,
+        "detail": "3"
+      },
+      {
+        "check": "已成功步骤写入结果",
+        "ok": true,
+        "detail": "[{'step': 'material_search', 'status': 'done', 'detail': '3 条素材'}, {'step': 'cost_estimate', 'status': 'not_run', 'detail': ''}, {'step': 'script_writing', 'status': 'not_run', 'detail': ''}, {'step': 'plan_save', 'status': 'not_run', 'detail': ''}]"
+      },
+      {
+        "check": "未保存方案",
+        "ok": true,
+        "detail": ""
+      }
+    ]
+  }
+]

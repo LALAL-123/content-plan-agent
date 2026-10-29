@@ -1,0 +1,2 @@
+{"case_id": "c02_missing_budget_deadline", "title": "缺预算和截止时间：不猜测，请求补充", "covers": ["缺预算或截止时间"],
+ "request": {"request_id": "PLAN-C02", "topic": "冬季露营", "preferred_option": "P-A"}}
