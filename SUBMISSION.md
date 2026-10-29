@@ -1,9 +1,9 @@
 # 提交说明（可直接粘贴到提交框）
 
 - 题号：2（内容任务规划 Agent）
-- GitHub URL：（推送后填写）
-- 最终 commit SHA：（推送后填写）
-- 实际用时：（本人填写）
+- GitHub URL：https://github.com/LALAL-123/content-plan-agent
+- 最终 commit SHA：见提交表单（main 分支最新提交）
+- 实际用时：约 1 小时 40 分钟（2026-10-29 14:45–16:25，AI 辅助完成实现、三轮真实模型评估与发布）
 
 ---
 
